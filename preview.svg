@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700">
+  <rect width="1000" height="700" fill="#ffffff"/>
+  <polygon points="90,120 880,120 900,520 260,610 70,560" fill="#f7fbff" stroke="#0f2e5e" stroke-width="2"/>
+  <rect x="90" y="120" width="240" height="90" fill="rgba(0,86,214,0.1)" stroke="#003b95" stroke-width="2"/>
+  <text x="98" y="138" font-size="14" font-family="Arial" fill="#001f4f" font-weight="bold">CH-01</text>
+  <text x="98" y="156" font-size="12" font-family="Arial" fill="#143564">8m × 3m</text>
+  <rect x="360" y="120" width="240" height="90" fill="rgba(0,86,214,0.1)" stroke="#003b95" stroke-width="2"/>
+  <text x="368" y="138" font-size="14" font-family="Arial" fill="#001f4f" font-weight="bold">CH-02</text>
+  <text x="368" y="156" font-size="12" font-family="Arial" fill="#143564">8m × 3m</text>
+  <rect x="630" y="120" width="240" height="90" fill="rgba(0,86,214,0.1)" stroke="#003b95" stroke-width="2"/>
+  <text x="638" y="138" font-size="14" font-family="Arial" fill="#001f4f" font-weight="bold">CH-03</text>
+  <text x="638" y="156" font-size="12" font-family="Arial" fill="#143564">8m × 3m</text>
+  <text x="40" y="40" font-size="20" font-family="Arial" fill="#0d1b2a">Demo Preview - Chiller Layout</text>
+</svg>

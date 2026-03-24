@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chiller Layout Drafting App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Chiller Layout Drafting App</h1>
+      <p>
+        Quickly convert rough site sketches into a clean drawing with dimensions.
+      </p>
+    </header>
+
+    <main>
+      <section class="panel controls">
+        <h2>1) Site Boundary</h2>
+        <p>
+          Click inside the drawing area to add boundary points. Close the shape when
+          ready.
+        </p>
+        <div class="row">
+          <button id="closeBoundaryBtn">Close Boundary</button>
+          <button id="clearBoundaryBtn" class="danger">Clear Boundary</button>
+        </div>
+
+        <h2>2) Add Chiller Unit</h2>
+        <div class="grid">
+          <label>
+            Name
+            <input id="nameInput" type="text" value="CH-01" />
+          </label>
+          <label>
+            Width (m)
+            <input id="widthInput" type="number" step="0.1" min="0.1" value="8" />
+          </label>
+          <label>
+            Depth (m)
+            <input id="depthInput" type="number" step="0.1" min="0.1" value="3" />
+          </label>
+          <label>
+            X position (m)
+            <input id="xInput" type="number" step="0.1" value="1" />
+          </label>
+          <label>
+            Y position (m)
+            <input id="yInput" type="number" step="0.1" value="1" />
+          </label>
+        </div>
+        <div class="row">
+          <button id="addUnitBtn">Add Unit</button>
+          <button id="clearUnitsBtn" class="danger">Clear Units</button>
+        </div>
+
+        <h2>3) Output</h2>
+        <div class="grid">
+          <label>
+            Scale (px per meter)
+            <input id="scaleInput" type="number" step="1" min="10" max="200" value="35" />
+          </label>
+        </div>
+        <div class="row wrap">
+          <button id="redrawBtn">Redraw</button>
+          <button id="downloadSvgBtn">Download SVG</button>
+          <button id="downloadJsonBtn">Download JSON</button>
+          <label class="file-label">
+            Load JSON
+            <input id="loadJsonInput" type="file" accept="application/json" />
+          </label>
+          <button id="loadDemoBtn">Load Demo Preview</button>
+          <button id="printBtn">Print / Save PDF</button>
+        </div>
+      </section>
+
+      <section class="panel canvas-wrap">
+        <h2>Drawing</h2>
+        <div id="status">Tip: add boundary points first.</div>
+        <svg id="planCanvas" width="1000" height="700" viewBox="0 0 1000 700"></svg>
+      </section>
+    </main>
+
+    <template id="unitLegendTemplate">
+      <div class="legend-item"></div>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
