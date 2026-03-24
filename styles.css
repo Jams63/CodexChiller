@@ -1,0 +1,158 @@
+:root {
+  --bg: #f4f6fb;
+  --panel: #ffffff;
+  --text: #0d1b2a;
+  --muted: #4f6072;
+  --line: #d5deea;
+  --accent: #0056d6;
+  --danger: #ba1b1b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+header {
+  padding: 16px 24px;
+  background: #0c1730;
+  color: #f8fbff;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+header p {
+  margin: 0;
+  color: #d9e2f2;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.controls h2,
+.canvas-wrap h2 {
+  margin-top: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+input,
+button {
+  font: inherit;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #b5c3d6;
+}
+
+button {
+  background: #ebf2ff;
+  color: var(--text);
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+button.danger {
+  background: #ffeaea;
+  color: var(--danger);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.row.wrap {
+  flex-wrap: wrap;
+}
+
+.file-label {
+  background: #eef4ff;
+  border: 1px solid #b5c3d6;
+  border-radius: 8px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.file-label input {
+  display: none;
+}
+
+#status {
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+#planCanvas {
+  width: 100%;
+  min-height: 640px;
+  border: 1px dashed #9db0ca;
+  background: #fff;
+}
+
+@media print {
+  header,
+  .controls,
+  #status {
+    display: none;
+  }
+
+  main {
+    display: block;
+    padding: 0;
+  }
+
+  .panel {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  #planCanvas {
+    border: none;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 980px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
