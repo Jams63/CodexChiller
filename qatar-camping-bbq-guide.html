@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Qatar Camping &amp; BBQ Beach Guide — Free Family Spots</title>
+  <title>Qatar Camping &amp; BBQ Beach Guide — All Free Family Spots</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -53,17 +53,20 @@
       font-size: clamp(2rem, 5.5vw, 3.2rem);
       font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px;
     }
-    .hero p { font-size: 1rem; opacity: 0.78; max-width: 440px; margin: 0 auto; }
+    .hero p { font-size: 1rem; opacity: 0.78; max-width: 460px; margin: 0 auto; }
 
     /* ── LAYOUT ── */
     .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
 
-    .section-label {
+    /* ── REGION DIVIDER ── */
+    .region {
       font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
       text-transform: uppercase; color: var(--maroon);
-      padding-top: 56px; padding-bottom: 6px;
+      padding-top: 52px; padding-bottom: 6px;
       margin-bottom: 28px; border-bottom: 2px solid var(--maroon-light);
+      display: flex; align-items: center; gap: 10px;
     }
+    .region span { opacity: 0.45; flex: 1; height: 1px; background: var(--maroon-light); }
 
     /* ── BEACH CARD ── */
     .beach-card {
@@ -76,26 +79,21 @@
       transform: translateY(-4px);
       box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 12px 40px rgba(0,0,0,0.12);
     }
-
     .img-wrap { position: relative; overflow: hidden; }
-
-    /* Shimmer skeleton while image loads */
     .beach-img {
-      width: 100%; height: 320px; object-fit: cover; display: block;
+      width: 100%; height: 300px; object-fit: cover; display: block;
       transition: transform 0.45s ease, opacity 0.4s ease;
       background: linear-gradient(90deg, #e8dfd3 25%, #f5efe6 50%, #e8dfd3 75%);
       background-size: 200% 100%;
       animation: shimmer 1.6s infinite;
-      opacity: 0.6;
+      opacity: 0.55;
     }
     .beach-img.ready { animation: none; opacity: 1; background: none; }
     .beach-card:hover .beach-img { transform: scale(1.03); }
-
     @keyframes shimmer {
       0%   { background-position:  200% 0; }
       100% { background-position: -200% 0; }
     }
-
     .img-credit {
       position: absolute; bottom: 10px; right: 12px;
       background: rgba(0,0,0,0.42); color: rgba(255,255,255,0.88);
@@ -103,9 +101,9 @@
       backdrop-filter: blur(6px);
     }
 
-    .body { padding: 26px 30px 30px; }
+    .body { padding: 24px 28px 28px; }
 
-    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 13px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
     .tag {
       font-size: 0.65rem; font-weight: 700; letter-spacing: 0.07em;
       text-transform: uppercase; padding: 3px 11px; border-radius: 12px;
@@ -115,35 +113,42 @@
     .t-camp   { background: #e3f2fd; color: #0d47a1; }
     .t-nature { background: #f3e5f5; color: #4a148c; }
     .t-family { background: #fce4ec; color: #880e4f; }
+    .t-dunes  { background: #fdf0e0; color: #7b3f00; }
 
     .beach-name {
-      font-size: 1.55rem; font-weight: 800; letter-spacing: -0.025em;
-      color: var(--text); margin-bottom: 5px;
+      font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em;
+      color: var(--text); margin-bottom: 4px;
     }
-    .beach-loc { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; }
-    .beach-desc { font-size: 0.92rem; color: #3a3a3c; line-height: 1.7; margin-bottom: 18px; }
+    .beach-loc { font-size: 0.8rem; color: var(--muted); margin-bottom: 13px; }
+    .beach-desc { font-size: 0.91rem; color: #3a3a3c; line-height: 1.7; margin-bottom: 16px; }
 
     .facts {
       list-style: none; background: var(--sand); border-radius: 11px;
-      padding: 14px 18px; margin-bottom: 22px;
+      padding: 13px 18px; margin-bottom: 20px;
     }
     .facts li {
       font-size: 0.84rem; color: #3a3a3c;
-      padding: 4px 0 4px 20px; position: relative; line-height: 1.5;
+      padding: 3px 0 3px 20px; position: relative; line-height: 1.5;
     }
     .facts li::before { content: '→'; position: absolute; left: 0; color: var(--maroon); font-weight: 700; }
 
     .btns { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 7px;
-      padding: 11px 22px; border-radius: 10px;
-      font-size: 0.85rem; font-weight: 600; text-decoration: none;
+      padding: 10px 20px; border-radius: 10px;
+      font-size: 0.84rem; font-weight: 600; text-decoration: none;
       transition: opacity 0.15s, transform 0.15s; white-space: nowrap;
     }
     .btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
     .btn-map { background: var(--maroon); color: #fff; }
     .btn-yt  { background: #ff0000; color: #fff; }
+
+    /* ── TIP BAR ── */
+    .tip-bar {
+      background: var(--maroon-light); border-left: 4px solid var(--maroon);
+      border-radius: 10px; padding: 14px 18px; font-size: 0.85rem;
+      color: var(--maroon-dark); margin: 40px 0 0; line-height: 1.6;
+    }
 
     /* ── VLOGS ── */
     .vlogs-grid {
@@ -159,13 +164,6 @@
     .vlog-title { font-size: 0.87rem; font-weight: 600; color: var(--text); line-height: 1.45; margin-bottom: 4px; }
     .vlog-ch { font-size: 0.75rem; color: var(--muted); }
 
-    /* ── TIP BAR ── */
-    .tip-bar {
-      background: var(--maroon-light); border-left: 4px solid var(--maroon);
-      border-radius: 10px; padding: 14px 18px; font-size: 0.85rem;
-      color: var(--maroon-dark); margin-bottom: 40px; line-height: 1.6;
-    }
-
     /* ── FOOTER ── */
     footer {
       background: #111; color: #888; text-align: center;
@@ -175,36 +173,172 @@
     footer a:hover { color: #fff; }
 
     @media (max-width: 620px) {
-      .beach-img { height: 240px; }
+      .beach-img { height: 230px; }
       .body { padding: 18px 20px 22px; }
-      .beach-name { font-size: 1.3rem; }
+      .beach-name { font-size: 1.25rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ HERO ══════════════════════════════════════ -->
+<!-- ══ HERO ══════════════════════════════════════════════ -->
 <div class="hero">
-  <div class="hero-badge">🇶🇦 Qatar &nbsp;·&nbsp; Free &nbsp;·&nbsp; Family &nbsp;·&nbsp; BBQ</div>
+  <div class="hero-badge">🇶🇦 Qatar &nbsp;·&nbsp; Free &nbsp;·&nbsp; Family &nbsp;·&nbsp; BBQ &nbsp;·&nbsp; 11 Spots</div>
   <h1>Camping &amp; Barbecue<br/>by the Beach in Qatar</h1>
-  <p>Free beachside escapes for family camping, BBQ nights &amp; stargazing — no booking, no fees.</p>
+  <p>Every free &amp; low-cost beachside spot for family camping, BBQ nights &amp; stargazing — no booking, no fees.</p>
 </div>
 
 <div class="wrap">
 
-  <div class="tip-bar" style="margin-top:44px;">
-    <strong>Best season:</strong> October – April &nbsp;|&nbsp;
-    <strong>Bring:</strong> BBQ grill, charcoal, water, sunscreen, tent &nbsp;|&nbsp;
-    <strong>All spots below are free or low-cost &amp; family-safe.</strong>
+  <div class="tip-bar">
+    <strong>Best season:</strong> October – April &nbsp;·&nbsp;
+    <strong>Bring:</strong> BBQ grill, charcoal, water, sunscreen, tent &nbsp;·&nbsp;
+    <strong>All 11 spots are free or low-cost &amp; family-safe.</strong>
   </div>
 
-  <div class="section-label" style="padding-top:0;">Top Spots</div>
+  <!-- ══════════════════════════════════
+       SOUTH OF DOHA
+  ══════════════════════════════════════ -->
+  <div class="region">South of Doha <span></span></div>
 
-  <!-- ══ 1. FUWAIRIT BEACH ══════════════════════ -->
+  <!-- 1. SEALINE BEACH -->
   <div class="beach-card">
     <div class="img-wrap">
-      <img id="img-fuwairit" class="beach-img"
-           alt="Fuwairit Beach — wild sandy shores in northern Qatar" />
+      <img id="img-sealine" class="beach-img" alt="Sealine Beach — where Qatar's desert dunes meet the sea" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
+    </div>
+    <div class="body">
+      <div class="tags">
+        <span class="tag t-free">Public Area Free</span>
+        <span class="tag t-camp">Camping OK</span>
+        <span class="tag t-dunes">Desert + Sea</span>
+        <span class="tag t-family">Family Favourite</span>
+      </div>
+      <div class="beach-name">Sealine Beach</div>
+      <div class="beach-loc">📍 Mesaieed · ~55 km south of Doha · ~40 min drive</div>
+      <p class="beach-desc">
+        Qatar's most iconic camping destination — the only public beach where towering sand dunes meet the sea. Dune bashing, quad bikes, and bonfire nights under the stars. Qatar's camping season opener every October.
+      </p>
+      <ul class="facts">
+        <li><strong>Directions:</strong> Take Al Wakrah Road south → Mesaieed Road → follow signs to Sealine / Khor Al Adaid direction.</li>
+        <li>Public beach: free entry. BBQ stands: ~150 QAR/stand with charcoal.</li>
+        <li>Lifeguards on duty. Toilets and parking available.</li>
+        <li>Best Nov–Mar. Standard car OK; 4×4 for dune access.</li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=24.9827,51.5553" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=2GGcufe2Leg" target="_blank" rel="noopener">▶ Watch Vlog 2025</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. AL WAKRAH FAMILY BEACH -->
+  <div class="beach-card">
+    <div class="img-wrap">
+      <img id="img-wakrah" class="beach-img" alt="Al Wakrah Family Beach — close south beach with playground" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
+    </div>
+    <div class="body">
+      <div class="tags">
+        <span class="tag t-free">Free Entry</span>
+        <span class="tag t-bbq">BBQ Pits</span>
+        <span class="tag t-family">Playground</span>
+        <span class="tag t-camp">Camping OK</span>
+      </div>
+      <div class="beach-name">Al Wakrah Family Beach</div>
+      <div class="beach-loc">📍 Al Wakrah · ~25 km south of Doha · ~25 min drive</div>
+      <p class="beach-desc">
+        Closest free family beach south of Doha. Shaded gazebos, BBQ pits, a playground, calm water and sports areas — all free. Great for a quick family evening out without driving far.
+      </p>
+      <ul class="facts">
+        <li><strong>Directions:</strong> Al Wakrah Main Road south from Doha → follow signs to Al Wakrah Corniche / Family Beach.</li>
+        <li>Completely free. BBQ pits, shaded seating, showers and toilets on-site.</li>
+        <li>Playground and sports area. Calm, shallow water for kids.</li>
+        <li>Parking available. Well-maintained and popular on weekends.</li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=25.169,51.601" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=jDmmHdzF4kk" target="_blank" rel="noopener">▶ Watch Vlog</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       EAST / NEAR DOHA
+  ══════════════════════════════════════ -->
+  <div class="region">East — Near Doha <span></span></div>
+
+  <!-- 3. SIMAISMA NORTH BEACH -->
+  <div class="beach-card">
+    <div class="img-wrap">
+      <img id="img-simaisma" class="beach-img" alt="Simaisma North Beach — calm family beach near Doha" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
+    </div>
+    <div class="body">
+      <div class="tags">
+        <span class="tag t-bbq">BBQ Grills</span>
+        <span class="tag t-camp">Camping OK</span>
+        <span class="tag t-family">Kids Safe</span>
+        <span class="tag t-free">Low Cost</span>
+      </div>
+      <div class="beach-name">Simaisma North Beach</div>
+      <div class="beach-loc">📍 Al Daayen · ~30 km north of Doha · ~25 min drive</div>
+      <p class="beach-desc">
+        The go-to weekend beach for Doha families. Calm shallow water, shaded seating, on-site BBQ grills, clean toilets — and only 25 minutes from the city. Toddler-safe water.
+      </p>
+      <ul class="facts">
+        <li><strong>Directions:</strong> Al Khor Coastal Road north → exit at Simaisma signs → straight to beachfront.</li>
+        <li>Entry: ~50 QAR per car. BBQ grills and shaded loungers on-site.</li>
+        <li>Toilets every 300 m. Ample parking. Family park adjacent.</li>
+        <li>Shallow calm water — safe for toddlers and young children.</li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=25.574,51.4881" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=X3ZUnaqU07A" target="_blank" rel="noopener">▶ Watch Vlog 2024</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       NORTH — AL KHOR & BEYOND
+  ══════════════════════════════════════ -->
+  <div class="region">North — Al Khor &amp; Beyond <span></span></div>
+
+  <!-- 4. AL THAKIRA (PURPLE ISLAND) -->
+  <div class="beach-card">
+    <div class="img-wrap">
+      <img id="img-thakira" class="beach-img" alt="Al Thakira Purple Island — mangrove beach near Al Khor" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
+    </div>
+    <div class="body">
+      <div class="tags">
+        <span class="tag t-free">Free</span>
+        <span class="tag t-nature">Mangroves</span>
+        <span class="tag t-camp">Camping OK</span>
+        <span class="tag t-family">Family Friendly</span>
+      </div>
+      <div class="beach-name">Al Thakira Beach <span style="font-weight:400;font-size:1rem;color:var(--muted)">(Purple Island)</span></div>
+      <div class="beach-loc">📍 Al Khor · ~60 km north of Doha · ~45 min drive</div>
+      <p class="beach-desc">
+        Hidden behind dense mangroves near Al Khor, this quiet inlet glows purple at sunset when the shallow water catches the light. Kayaking through mangrove tunnels and BBQ under the stars.
+      </p>
+      <ul class="facts">
+        <li><strong>Directions:</strong> Al Khor Road north → into Al Khor city → follow "Al Thakira Mangroves" or "Purple Island" signs.</li>
+        <li>Completely free. Kayak rentals nearby (~30–50 QAR/hr).</li>
+        <li>Flat open area — ideal for tents and BBQ beside the water.</li>
+        <li>Go at sunset for the famous purple-lit shallow water glow.</li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=25.6835,51.5265" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=EVzN6-mtWsU" target="_blank" rel="noopener">▶ Watch Vlog 4K</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. FUWAIRIT BEACH -->
+  <div class="beach-card">
+    <div class="img-wrap">
+      <img id="img-fuwairit" class="beach-img" alt="Fuwairit Beach — wild sandy shores in northern Qatar" />
       <span class="img-credit">📷 via Wikipedia Commons</span>
     </div>
     <div class="body">
@@ -217,68 +351,92 @@
       <div class="beach-name">Fuwairit Beach</div>
       <div class="beach-loc">📍 Al Shamal · ~120 km north of Doha · ~1.5 hr drive</div>
       <p class="beach-desc">
-        Qatar's most-loved wild beach. Wide sandy shores, crystal Gulf water, and zero crowds.
-        Sea turtles nest here in summer. Overnight family camping is a local tradition.
+        Qatar's most-loved wild beach. Wide sandy shores, crystal Gulf water, zero crowds. Sea turtles nest here in summer. Overnight family camping is a long-standing local tradition.
       </p>
       <ul class="facts">
         <li><strong>Directions:</strong> Al Shamal Road (Route 1) north → exit at Fuwairit village sign → follow coastal track.</li>
-        <li>Completely free, no gate, no ticket. Open 24 hours.</li>
+        <li>Completely free. No gate, no ticket. Open 24 hours.</li>
         <li>No facilities — bring your own grill, charcoal, water &amp; tent.</li>
         <li>Best Oct–Apr. 4×4 helpful on soft sand near the shore.</li>
       </ul>
       <div class="btns">
-        <a class="btn btn-map"
-           href="https://www.google.com/maps/dir/?api=1&destination=26.0704,51.3578"
-           target="_blank" rel="noopener">📍 Get Directions</a>
-        <a class="btn btn-yt"
-           href="https://www.youtube.com/watch?v=TQ2w1cuCb7c"
-           target="_blank" rel="noopener">▶ Watch Vlog 2024</a>
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=26.0704,51.3578" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=TQ2w1cuCb7c" target="_blank" rel="noopener">▶ Watch Vlog 2024</a>
       </div>
     </div>
   </div>
 
-  <!-- ══ 2. SIMAISMA NORTH BEACH ════════════════ -->
+  <!-- 6. AL GHARIYA BEACH -->
   <div class="beach-card">
     <div class="img-wrap">
-      <img id="img-simaisma" class="beach-img"
-           alt="Simaisma North Beach — calm family beach near Doha" />
+      <img id="img-ghariya" class="beach-img" alt="Al Ghariya Beach — green spaces and BBQ pits just beyond Fuwairit" />
       <span class="img-credit">📷 via Wikipedia Commons</span>
     </div>
     <div class="body">
       <div class="tags">
-        <span class="tag t-bbq">BBQ Area</span>
+        <span class="tag t-free">Free</span>
+        <span class="tag t-bbq">BBQ Pits</span>
         <span class="tag t-camp">Camping OK</span>
-        <span class="tag t-family">Kids Safe</span>
-        <span class="tag t-free">Low Cost</span>
+        <span class="tag t-family">Kids Friendly</span>
       </div>
-      <div class="beach-name">Simaisma North Beach</div>
-      <div class="beach-loc">📍 Al Daayen · ~30 km north of Doha · ~25 min drive</div>
+      <div class="beach-name">Al Ghariya Beach</div>
+      <div class="beach-loc">📍 Ash Shamal · ~85 km north of Doha · ~1.5 hr drive</div>
       <p class="beach-desc">
-        The closest proper beach to Doha for a quick family escape. Calm shallow water,
-        shaded seating, on-site BBQ grills, and clean toilets — perfect for a relaxed day out.
+        Just 5 km past Fuwairit lies this lesser-known gem — green grassy areas, BBQ pits, showers, toilets and crystal-clear shallow water. A maintained section plus a wild open beach next to it.
       </p>
       <ul class="facts">
-        <li><strong>Directions:</strong> Al Khor Coastal Road north → exit at Simaisma signs → straight to beachfront.</li>
-        <li>Entry: ~50 QAR per car. BBQ grills and shaded loungers on-site.</li>
-        <li>Toilets every 300 m. Ample parking. Family park adjacent.</li>
-        <li>Shallow calm water — safe for toddlers and young children.</li>
+        <li><strong>Directions:</strong> Al Shamal Road north past Fuwairit → follow signs to Al Ghariya Beach (~5 km further).</li>
+        <li>Maintained area: BBQ pits, showers, toilets, shaded seating — free.</li>
+        <li>Adjacent open beach: wild camping, no facilities, no restrictions.</li>
+        <li>Shallow water, great for families with small children.</li>
       </ul>
       <div class="btns">
-        <a class="btn btn-map"
-           href="https://www.google.com/maps/dir/?api=1&destination=25.574,51.4881"
-           target="_blank" rel="noopener">📍 Get Directions</a>
-        <a class="btn btn-yt"
-           href="https://www.youtube.com/watch?v=X3ZUnaqU07A"
-           target="_blank" rel="noopener">▶ Watch Vlog 2024</a>
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=26.1156,51.3573" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=upvHm_YXYtM" target="_blank" rel="noopener">▶ Watch Vlog</a>
       </div>
     </div>
   </div>
 
-  <!-- ══ 3. ZEKREET BEACH ═══════════════════════ -->
+  <!-- 7. AL MAROONA BEACH (FRENCH BEACH) -->
   <div class="beach-card">
     <div class="img-wrap">
-      <img id="img-zekreet" class="beach-img"
-           alt="Zekreet Beach — dramatic cliffs and camping on Qatar's west coast" />
+      <img id="img-maroona" class="beach-img" alt="Al Maroona French Beach — golden sands in north Qatar" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
+    </div>
+    <div class="body">
+      <div class="tags">
+        <span class="tag t-free">Free</span>
+        <span class="tag t-camp">Camping OK</span>
+        <span class="tag t-nature">Hidden Gem</span>
+        <span class="tag t-family">Family Friendly</span>
+      </div>
+      <div class="beach-name">Al Maroona Beach <span style="font-weight:400;font-size:1rem;color:var(--muted)">(French Beach)</span></div>
+      <div class="beach-loc">📍 Al Shamal · ~94 km north of Doha · ~1 hr 15 min drive</div>
+      <p class="beach-desc">
+        Locals call it "French Beach" — a secluded golden-sand bay most visitors never find. Calm transparent water with starfish and crabs visible at the shore. Ideal for quiet family camping and crabbing.
+      </p>
+      <ul class="facts">
+        <li><strong>Directions:</strong> Al Shamal Road → Exit 72 east service road → right at Maroona Mosque → follow beach signs 6 km.</li>
+        <li>Completely free. No entry fee. No facilities — bring everything.</li>
+        <li>Excellent for crabbing along the shore at low tide.</li>
+        <li>Campervan and caravan stays common — wide flat camping area.</li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=26.2552,51.3688" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=GZyZ_ep2Fmg" target="_blank" rel="noopener">▶ Watch Vlog</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       WEST COAST
+  ══════════════════════════════════════ -->
+  <div class="region">West Coast <span></span></div>
+
+  <!-- 8. ZEKREET BEACH -->
+  <div class="beach-card">
+    <div class="img-wrap">
+      <img id="img-zekreet" class="beach-img" alt="Zekreet Beach — dramatic rocky cliffs on Qatar's west coast" />
       <span class="img-credit">📷 via Wikipedia Commons</span>
     </div>
     <div class="body">
@@ -289,73 +447,94 @@
         <span class="tag t-nature">Rock Formations</span>
       </div>
       <div class="beach-name">Zekreet Beach</div>
-      <div class="beach-loc">📍 Al Shahaniya · ~80 km northwest of Doha · ~1 hr drive</div>
+      <div class="beach-loc">📍 Al Shahaniya · ~80 km west of Doha · ~1 hr drive</div>
       <p class="beach-desc">
-        Remote, dramatic, and unforgettable. Rugged rocky cliffs meet clear Gulf water.
-        Qatar's "Film City" rock formations sit minutes away — a bonus hike after your BBQ.
+        Remote, dramatic, unforgettable. Rocky cliffs drop into clear Gulf water. Qatar's "Film City" stone formations are minutes away — a bonus hike after the BBQ. One of the most photogenic spots in Qatar.
       </p>
       <ul class="facts">
-        <li><strong>Directions:</strong> Dukhan Highway (Route 3) west → follow signs to Zekreet (Bir Zekrit) → bear right to coastline.</li>
+        <li><strong>Directions:</strong> Dukhan Highway (Route 3) west → follow signs to Zekreet / Bir Zekrit → bear right to coastline.</li>
         <li>Completely free. No entry fee. Open 24 hours.</li>
         <li>Bring all supplies: water, BBQ kit, tent, fuel. No facilities.</li>
         <li>Rocky shore — wear sandals. 4×4 recommended off the main track.</li>
       </ul>
       <div class="btns">
-        <a class="btn btn-map"
-           href="https://www.google.com/maps/dir/?api=1&destination=25.5059,50.8747"
-           target="_blank" rel="noopener">📍 Get Directions</a>
-        <a class="btn btn-yt"
-           href="https://www.youtube.com/watch?v=OK3RcGvRaZs"
-           target="_blank" rel="noopener">▶ Watch Vlog 2025</a>
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=25.5059,50.8747" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=OK3RcGvRaZs" target="_blank" rel="noopener">▶ Watch Vlog 2025</a>
       </div>
     </div>
   </div>
 
-  <!-- ══ 4. AL THAKIRA (PURPLE ISLAND) ══════════ -->
+  <!-- 9. RAS BROOG (RAS ABROUQ) -->
   <div class="beach-card">
     <div class="img-wrap">
-      <img id="img-thakira" class="beach-img"
-           alt="Al Thakira Purple Island — mangrove beach near Al Khor" />
+      <img id="img-rasbroog" class="beach-img" alt="Ras Broog — mushroom limestone rocks and pristine white beach" />
       <span class="img-credit">📷 via Wikipedia Commons</span>
     </div>
     <div class="body">
       <div class="tags">
         <span class="tag t-free">Free</span>
-        <span class="tag t-nature">Mangroves</span>
         <span class="tag t-camp">Camping OK</span>
-        <span class="tag t-family">Family Friendly</span>
+        <span class="tag t-nature">Mushroom Rocks</span>
+        <span class="tag t-bbq">BBQ Pits</span>
       </div>
-      <div class="beach-name">
-        Al Thakira Beach
-        <span style="font-weight:400;font-size:1rem;color:var(--muted)"> (Purple Island)</span>
-      </div>
-      <div class="beach-loc">📍 Al Khor · ~60 km north of Doha · ~45 min drive</div>
+      <div class="beach-name">Ras Broog <span style="font-weight:400;font-size:1rem;color:var(--muted)">(Ras Abrouq)</span></div>
+      <div class="beach-loc">📍 Zekreet Peninsula · ~80 km west of Doha · ~1 hr drive</div>
       <p class="beach-desc">
-        Hidden behind dense mangroves near Al Khor — serene and breathtaking at sunset
-        when the shallow water glows purple. Flat open ground for BBQ and overnight camping.
+        A geological wonder on Qatar's west coast. Wind-carved limestone mushroom rocks rise from powdery white sand. Pristine, quiet, and surreal. BBQ pits on-site. Stargazing is exceptional here.
       </p>
       <ul class="facts">
-        <li><strong>Directions:</strong> Al Khor Road north → into Al Khor city → follow "Al Thakira Mangroves" or "Purple Island" signs.</li>
-        <li>Completely free. Kayak rentals nearby (~30–50 QAR/hr).</li>
-        <li>Flat open area — ideal for tents and BBQ beside the water.</li>
-        <li>Go at sunset for the famous purple-lit shallow water glow.</li>
+        <li><strong>Directions:</strong> Dukhan Highway → Exit 72 → Zekreet Road → follow signs to Ras Abrouq / Zekreet Peninsula tip.</li>
+        <li>Free entry. BBQ pits on-site. No other facilities — bring water and supplies.</li>
+        <li>Mushroom-shaped limestone rocks unique to this stretch of coast.</li>
+        <li>Standard car OK on the main road; 4×4 recommended near the beach.</li>
       </ul>
       <div class="btns">
-        <a class="btn btn-map"
-           href="https://www.google.com/maps/dir/?api=1&destination=25.6835,51.5265"
-           target="_blank" rel="noopener">📍 Get Directions</a>
-        <a class="btn btn-yt"
-           href="https://www.youtube.com/watch?v=EVzN6-mtWsU"
-           target="_blank" rel="noopener">▶ Watch Vlog 4K</a>
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=25.508,50.855" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=OKokb9bvKoQ" target="_blank" rel="noopener">▶ Watch Vlog 2024</a>
       </div>
     </div>
   </div>
 
-  <!-- ══ 5. AL KHARAIJ BEACH ════════════════════ -->
+  <!-- 10. DUKHAN BEACH -->
   <div class="beach-card">
     <div class="img-wrap">
-      <img id="img-kharaij" class="beach-img"
-           alt="Al Kharaij Beach — palm tree beach near Umm Bab, west Qatar" />
+      <img id="img-dukhan" class="beach-img" alt="Dukhan Beach — sunset capital of Qatar's west coast" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
+    </div>
+    <div class="body">
+      <div class="tags">
+        <span class="tag t-free">Free</span>
+        <span class="tag t-camp">Camping OK</span>
+        <span class="tag t-bbq">BBQ</span>
+        <span class="tag t-nature">Best Sunsets</span>
+      </div>
+      <div class="beach-name">Dukhan Beach</div>
+      <div class="beach-loc">📍 Dukhan · ~90 km west of Doha · ~1 hr 15 min drive</div>
+      <p class="beach-desc">
+        Famous for Qatar's most spectacular sunsets — the western horizon burns orange and red over the Gulf. Crystal-clear waves, fine sand, and wide open space for camping and family BBQs.
+      </p>
+      <ul class="facts">
+        <li><strong>Directions:</strong> Dukhan Highway (Route 3) all the way west → enter Dukhan city → follow signs to Dukhan Beach / corniche.</li>
+        <li>Completely free. No entry fee. Open 24 hours.</li>
+        <li>Bring your own BBQ gear — no facilities on the open beach.</li>
+        <li>Time your visit for sunset — one of the best in the Gulf.</li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=25.427,50.779" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=ngjDEEJa5uM" target="_blank" rel="noopener">▶ Watch Vlog 2024</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       SOUTH-WEST
+  ══════════════════════════════════════ -->
+  <div class="region">South-West <span></span></div>
+
+  <!-- 11. AL KHARAIJ BEACH -->
+  <div class="beach-card">
+    <div class="img-wrap">
+      <img id="img-kharaij" class="beach-img" alt="Al Kharaij Beach — palm tree beach near Umm Bab" />
       <span class="img-credit">📷 via Wikipedia Commons</span>
     </div>
     <div class="body">
@@ -365,41 +544,32 @@
         <span class="tag t-family">Play Area</span>
         <span class="tag t-free">Free Public Area</span>
       </div>
-      <div class="beach-name">
-        Al Kharaij Beach
-        <span style="font-weight:400;font-size:1rem;color:var(--muted)"> (Palm Tree Beach)</span>
-      </div>
+      <div class="beach-name">Al Kharaij Beach <span style="font-weight:400;font-size:1rem;color:var(--muted)">(Palm Tree Beach)</span></div>
       <div class="beach-loc">📍 Umm Bab · ~90 km west of Doha · ~1 hr drive</div>
       <p class="beach-desc">
-        A hidden gem on Qatar's quiet west coast. Calm shallow water lined with palm trees,
-        on-site BBQ stands, showers, toilets, and a children's play area in the gated family section.
-        The open public zone allows free camping and BBQ with no time limits.
+        A hidden gem on Qatar's quiet south-west coast. Calm shallow water lined with palm trees, on-site BBQ stands, showers, toilets, and a children's play area in the gated family section. Free public camping area has no time limits.
       </p>
       <ul class="facts">
-        <li><strong>Directions:</strong> Dukhan Highway (Route 3) west → exit towards Umm Bab → follow signs for Al Kharaij Beach (avoid off-road shortcuts on Google Maps).</li>
-        <li>Public area: free entry. Gated family section: small access fee.</li>
-        <li>BBQ stands, showers, toilets &amp; shaded seating in gated section.</li>
+        <li><strong>Directions:</strong> Dukhan Highway west → exit towards Umm Bab → follow signs for Al Kharaij Beach (skip GPS shortcuts — stay on paved road).</li>
+        <li>Public area: free. Gated family section: small access fee.</li>
+        <li>BBQ stands, showers, toilets &amp; shaded seating inside gated section.</li>
         <li>4×4 recommended — last stretch of road can be unpaved.</li>
       </ul>
       <div class="btns">
-        <a class="btn btn-map"
-           href="https://www.google.com/maps/dir/?api=1&destination=25.1900,50.8200"
-           target="_blank" rel="noopener">📍 Get Directions</a>
-        <a class="btn btn-yt"
-           href="https://www.youtube.com/watch?v=jzxP2vFt4Ck"
-           target="_blank" rel="noopener">▶ Watch Vlog</a>
+        <a class="btn btn-map" href="https://www.google.com/maps/dir/?api=1&destination=25.190,50.820" target="_blank" rel="noopener">📍 Get Directions</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=jzxP2vFt4Ck" target="_blank" rel="noopener">▶ Watch Vlog</a>
       </div>
     </div>
   </div>
 
-  <!-- ══ VLOGS SECTION ══════════════════════════ -->
-  <div class="section-label">Featured Vlogs — 2024 &amp; 2025</div>
+  <!-- ══ FEATURED VLOGS ══════════════════════════════════ -->
+  <div class="region" style="padding-top:12px;">Featured Vlogs — 2024 &amp; 2025 <span></span></div>
 
   <div class="vlogs-grid">
 
     <div class="vlog-card">
       <iframe src="https://www.youtube.com/embed/2GGcufe2Leg"
-              title="2025 Camping in Qatar Sealine Beach — Tips & Guide"
+              title="2025 Camping in Qatar Sealine Beach — 11 Tips & Guide"
               allowfullscreen loading="lazy"></iframe>
       <div class="vlog-info">
         <div class="vlog-title">2025 Camping in Qatar — Sealine Beach | 11 Tips &amp; Guide</div>
@@ -408,18 +578,18 @@
     </div>
 
     <div class="vlog-card">
-      <iframe src="https://www.youtube.com/embed/HBC3jmYx6hU"
-              title="Overnight Camping on the Beach — Life in Qatar"
+      <iframe src="https://www.youtube.com/embed/upvHm_YXYtM"
+              title="Family Vlog | Al Ghariya Beach | BBQ | Old Fishermen's Village"
               allowfullscreen loading="lazy"></iframe>
       <div class="vlog-info">
-        <div class="vlog-title">Overnight Camping on the Beach — Life in Qatar</div>
-        <div class="vlog-ch">Beach camping vlog · Qatar</div>
+        <div class="vlog-title">Family Trip to Al Ghariya Beach — BBQ &amp; Old Fishermen's Village</div>
+        <div class="vlog-ch">Al Ghariya family vlog · Qatar</div>
       </div>
     </div>
 
     <div class="vlog-card">
       <iframe src="https://www.youtube.com/embed/OK3RcGvRaZs"
-              title="Exploring Qatar's Zekreet Beach & Mysterious Film City 2025"
+              title="Exploring Qatar's Zekreet Beach & Film City 2025"
               allowfullscreen loading="lazy"></iframe>
       <div class="vlog-info">
         <div class="vlog-title">Zekreet Beach &amp; Mysterious Film City — Hidden Gems 2025</div>
@@ -428,12 +598,12 @@
     </div>
 
     <div class="vlog-card">
-      <iframe src="https://www.youtube.com/embed/TQ2w1cuCb7c"
-              title="Fuwairit Beach Secret Cave Qatar 2024"
+      <iframe src="https://www.youtube.com/embed/GZyZ_ep2Fmg"
+              title="Weekend Camping at Al Maroona French Beach Qatar"
               allowfullscreen loading="lazy"></iframe>
       <div class="vlog-info">
-        <div class="vlog-title">Secret Cave at Fuwairit Beach — Indian Family in Qatar 2024</div>
-        <div class="vlog-ch">Fuwairit beach vlog · 2024</div>
+        <div class="vlog-title">Weekend Camping at Al Maroona (French Beach) Qatar</div>
+        <div class="vlog-ch">Camping vlog · North Qatar</div>
       </div>
     </div>
 
@@ -443,72 +613,58 @@
 
 <footer>
   <p>
-    All spots are free or low-cost public beaches open to everyone. Best visited October – April.
+    11 free &amp; low-cost public beaches. Best Oct – Apr. Always bring water, grill &amp; supplies.
     &nbsp;·&nbsp;
     <a href="https://visitqatar.com" target="_blank" rel="noopener">visitqatar.com</a>
   </p>
 </footer>
 
-<!-- ══ IMAGE LOADER — Wikipedia Open API (no key needed) ══ -->
+<!-- ══ WIKIPEDIA IMAGE LOADER (no API key needed) ══════════ -->
 <script>
   const beaches = [
-    {
-      id: 'img-fuwairit',
-      wikiTitles: ['Fuwayrit', 'Fuwairit_Beach'],
-      ytId: 'TQ2w1cuCb7c'
-    },
-    {
-      id: 'img-simaisma',
-      wikiTitles: ['Simaisma', 'Simaisma_Beach'],
-      ytId: 'X3ZUnaqU07A'
-    },
-    {
-      id: 'img-zekreet',
-      wikiTitles: ['Zekreet', 'Zekreet_Beach'],
-      ytId: 'OK3RcGvRaZs'
-    },
-    {
-      id: 'img-thakira',
-      wikiTitles: ['Purple_Island,_Qatar', 'Al_Thakira'],
-      ytId: 'EVzN6-mtWsU'
-    },
-    {
-      id: 'img-kharaij',
-      wikiTitles: ['Umm_Bab', 'Al_Kharaij'],
-      ytId: 'jzxP2vFt4Ck'
-    }
+    { id: 'img-sealine',  wiki: ['Sealine_Beach,_Qatar', 'Mesaieed'],                   yt: '2GGcufe2Leg' },
+    { id: 'img-wakrah',   wiki: ['Al_Wakrah', 'Al_Wakra'],                              yt: 'jDmmHdzF4kk' },
+    { id: 'img-simaisma', wiki: ['Simaisma', 'Simaisma_Beach'],                         yt: 'X3ZUnaqU07A' },
+    { id: 'img-thakira',  wiki: ['Purple_Island,_Qatar', 'Al_Thakira'],                 yt: 'EVzN6-mtWsU' },
+    { id: 'img-fuwairit', wiki: ['Fuwayrit', 'Fuwairit_Beach'],                         yt: 'TQ2w1cuCb7c' },
+    { id: 'img-ghariya',  wiki: ['Al_Ghariyah', 'Ash_Shamal,_Qatar'],                   yt: 'upvHm_YXYtM' },
+    { id: 'img-maroona',  wiki: ['Al_Maroona_Beach', 'Fuwayrit'],                       yt: 'GZyZ_ep2Fmg' },
+    { id: 'img-zekreet',  wiki: ['Zekreet', 'Zekreet_Beach'],                           yt: 'OK3RcGvRaZs' },
+    { id: 'img-rasbroog', wiki: ['Ras_Abrouq', 'Zekreet'],                              yt: 'OKokb9bvKoQ' },
+    { id: 'img-dukhan',   wiki: ['Dukhan', 'Dukhan_Beach'],                             yt: 'ngjDEEJa5uM' },
+    { id: 'img-kharaij',  wiki: ['Umm_Bab', 'Al_Kharaij'],                              yt: 'jzxP2vFt4Ck' }
   ];
 
-  async function loadWikiImage(titles, imgEl, ytId) {
+  async function tryWiki(titles, img, ytId) {
     for (const title of titles) {
       try {
-        const url =
-          'https://en.wikipedia.org/w/api.php' +
-          '?action=query&prop=pageimages&pithumbsize=900' +
-          '&titles=' + encodeURIComponent(title) +
-          '&format=json&origin=*';
-        const res = await fetch(url);
-        const data = await res.json();
-        const page = Object.values(data.query.pages)[0];
-        if (page.thumbnail && page.thumbnail.source) {
-          imgEl.src = page.thumbnail.source;
-          imgEl.onload = () => imgEl.classList.add('ready');
-          imgEl.onerror = () => useFallback(imgEl, ytId);
-          return; // success — stop trying other titles
+        const r = await fetch(
+          'https://en.wikipedia.org/w/api.php?action=query&prop=pageimages' +
+          '&pithumbsize=900&titles=' + encodeURIComponent(title) +
+          '&format=json&origin=*'
+        );
+        const d = await r.json();
+        const page = Object.values(d.query.pages)[0];
+        if (page && page.thumbnail) {
+          img.src = page.thumbnail.source;
+          img.onload = () => img.classList.add('ready');
+          img.onerror = () => fallback(img, ytId);
+          return;
         }
       } catch (_) {}
     }
-    useFallback(imgEl, ytId);
+    fallback(img, ytId);
   }
 
-  function useFallback(imgEl, ytId) {
-    imgEl.src = 'https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg';
-    imgEl.onload = () => imgEl.classList.add('ready');
+  function fallback(img, ytId) {
+    img.src = 'https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg';
+    img.onload = () => img.classList.add('ready');
+    img.onerror = () => img.classList.add('ready');
   }
 
-  beaches.forEach(({ id, wikiTitles, ytId }) => {
+  beaches.forEach(({ id, wiki, yt }) => {
     const img = document.getElementById(id);
-    if (img) loadWikiImage(wikiTitles, img, ytId);
+    if (img) tryWiki(wiki, img, yt);
   });
 </script>
 
