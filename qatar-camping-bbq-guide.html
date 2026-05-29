@@ -14,7 +14,6 @@
       --sand: #faf7f2;
       --text: #1c1c1e;
       --muted: #6e6e73;
-      --border: #e8e5e0;
     }
 
     html { scroll-behavior: smooth; }
@@ -35,7 +34,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .hero::after {
       content: '';
       position: absolute;
@@ -43,118 +41,75 @@
       background: var(--sand);
       clip-path: ellipse(60% 100% at 50% 100%);
     }
-
     .hero-badge {
       display: inline-block;
       border: 1.5px solid rgba(255,255,255,0.35);
       color: rgba(255,255,255,0.9);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      padding: 5px 16px;
-      border-radius: 20px;
-      margin-bottom: 22px;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 20px; margin-bottom: 22px;
     }
-
     .hero h1 {
       font-size: clamp(2rem, 5.5vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 16px;
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px;
     }
-
-    .hero p {
-      font-size: 1.02rem;
-      opacity: 0.78;
-      max-width: 440px;
-      margin: 0 auto;
-    }
+    .hero p { font-size: 1rem; opacity: 0.78; max-width: 440px; margin: 0 auto; }
 
     /* ── LAYOUT ── */
-    .wrap {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
 
     .section-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--maroon);
-      padding-top: 56px;
-      padding-bottom: 6px;
-      margin-bottom: 28px;
-      border-bottom: 2px solid var(--maroon-light);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--maroon);
+      padding-top: 56px; padding-bottom: 6px;
+      margin-bottom: 28px; border-bottom: 2px solid var(--maroon-light);
     }
 
     /* ── BEACH CARD ── */
     .beach-card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
+      background: #fff; border-radius: 20px; overflow: hidden;
       margin-bottom: 36px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 6px 28px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 6px 28px rgba(0,0,0,0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .beach-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.07), 0 12px 40px rgba(0,0,0,0.11);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 12px 40px rgba(0,0,0,0.12);
     }
 
-    .img-wrap {
-      position: relative;
-      overflow: hidden;
-    }
+    .img-wrap { position: relative; overflow: hidden; }
 
+    /* Shimmer skeleton while image loads */
     .beach-img {
-      width: 100%;
-      height: 310px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.45s ease;
+      width: 100%; height: 320px; object-fit: cover; display: block;
+      transition: transform 0.45s ease, opacity 0.4s ease;
+      background: linear-gradient(90deg, #e8dfd3 25%, #f5efe6 50%, #e8dfd3 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.6s infinite;
+      opacity: 0.6;
     }
+    .beach-img.ready { animation: none; opacity: 1; background: none; }
+    .beach-card:hover .beach-img { transform: scale(1.03); }
 
-    .beach-card:hover .beach-img {
-      transform: scale(1.03);
+    @keyframes shimmer {
+      0%   { background-position:  200% 0; }
+      100% { background-position: -200% 0; }
     }
 
     .img-credit {
-      position: absolute;
-      bottom: 10px;
-      right: 12px;
-      background: rgba(0,0,0,0.42);
-      color: rgba(255,255,255,0.88);
-      font-size: 0.62rem;
-      padding: 3px 9px;
-      border-radius: 5px;
+      position: absolute; bottom: 10px; right: 12px;
+      background: rgba(0,0,0,0.42); color: rgba(255,255,255,0.88);
+      font-size: 0.62rem; padding: 3px 9px; border-radius: 5px;
       backdrop-filter: blur(6px);
     }
 
-    .body {
-      padding: 26px 30px 30px;
-    }
+    .body { padding: 26px 30px 30px; }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-bottom: 13px;
-    }
-
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 13px; }
     .tag {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      padding: 3px 11px;
-      border-radius: 12px;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 3px 11px; border-radius: 12px;
     }
-
     .t-free   { background: #e8f5e9; color: #1b5e20; }
     .t-bbq    { background: #fff3e0; color: #bf360c; }
     .t-camp   { background: #e3f2fd; color: #0d47a1; }
@@ -162,152 +117,73 @@
     .t-family { background: #fce4ec; color: #880e4f; }
 
     .beach-name {
-      font-size: 1.55rem;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      color: var(--text);
-      margin-bottom: 5px;
+      font-size: 1.55rem; font-weight: 800; letter-spacing: -0.025em;
+      color: var(--text); margin-bottom: 5px;
     }
-
-    .beach-loc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .beach-desc {
-      font-size: 0.92rem;
-      color: #3a3a3c;
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
+    .beach-loc { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; }
+    .beach-desc { font-size: 0.92rem; color: #3a3a3c; line-height: 1.7; margin-bottom: 18px; }
 
     .facts {
-      list-style: none;
-      background: var(--sand);
-      border-radius: 11px;
-      padding: 14px 18px;
-      margin-bottom: 22px;
+      list-style: none; background: var(--sand); border-radius: 11px;
+      padding: 14px 18px; margin-bottom: 22px;
     }
-
     .facts li {
-      font-size: 0.84rem;
-      color: #3a3a3c;
-      padding: 4px 0 4px 20px;
-      position: relative;
-      line-height: 1.5;
+      font-size: 0.84rem; color: #3a3a3c;
+      padding: 4px 0 4px 20px; position: relative; line-height: 1.5;
     }
+    .facts li::before { content: '→'; position: absolute; left: 0; color: var(--maroon); font-weight: 700; }
 
-    .facts li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--maroon);
-      font-weight: 700;
-    }
-
-    .btns {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
+    .btns { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 11px 22px;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.15s, transform 0.15s;
-      white-space: nowrap;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 11px 22px; border-radius: 10px;
+      font-size: 0.85rem; font-weight: 600; text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s; white-space: nowrap;
     }
-
     .btn:hover { opacity: 0.85; transform: translateY(-1px); }
     .btn:active { transform: translateY(0); }
-
     .btn-map { background: var(--maroon); color: #fff; }
     .btn-yt  { background: #ff0000; color: #fff; }
 
     /* ── VLOGS ── */
     .vlogs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      padding-bottom: 72px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; padding-bottom: 72px;
     }
-
     .vlog-card {
-      background: #fff;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 4px 18px rgba(0,0,0,0.06);
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 4px 18px rgba(0,0,0,0.07);
     }
+    .vlog-card iframe { width: 100%; aspect-ratio: 16/9; display: block; border: 0; }
+    .vlog-info { padding: 14px 16px 16px; }
+    .vlog-title { font-size: 0.87rem; font-weight: 600; color: var(--text); line-height: 1.45; margin-bottom: 4px; }
+    .vlog-ch { font-size: 0.75rem; color: var(--muted); }
 
-    .vlog-card iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      display: block;
-      border: 0;
-    }
-
-    .vlog-info {
-      padding: 14px 16px 16px;
-    }
-
-    .vlog-title {
-      font-size: 0.87rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.45;
-      margin-bottom: 4px;
-    }
-
-    .vlog-ch {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    /* ── QUICK TIP BANNER ── */
+    /* ── TIP BAR ── */
     .tip-bar {
-      background: var(--maroon-light);
-      border-left: 4px solid var(--maroon);
-      border-radius: 10px;
-      padding: 14px 18px;
-      font-size: 0.85rem;
-      color: var(--maroon-dark);
-      margin-bottom: 40px;
-      line-height: 1.6;
+      background: var(--maroon-light); border-left: 4px solid var(--maroon);
+      border-radius: 10px; padding: 14px 18px; font-size: 0.85rem;
+      color: var(--maroon-dark); margin-bottom: 40px; line-height: 1.6;
     }
-
-    .tip-bar strong { font-weight: 700; }
 
     /* ── FOOTER ── */
     footer {
-      background: #111;
-      color: #888;
-      text-align: center;
-      padding: 26px 20px;
-      font-size: 0.78rem;
+      background: #111; color: #888; text-align: center;
+      padding: 26px 20px; font-size: 0.78rem;
     }
-
     footer a { color: #bbb; text-decoration: none; }
     footer a:hover { color: #fff; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 620px) {
-      .beach-img  { height: 230px; }
-      .body       { padding: 18px 20px 22px; }
+      .beach-img { height: 240px; }
+      .body { padding: 18px 20px 22px; }
       .beach-name { font-size: 1.3rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ HERO ══════════════════════════════════════════════ -->
+<!-- ══ HERO ══════════════════════════════════════ -->
 <div class="hero">
   <div class="hero-badge">🇶🇦 Qatar &nbsp;·&nbsp; Free &nbsp;·&nbsp; Family &nbsp;·&nbsp; BBQ</div>
   <h1>Camping &amp; Barbecue<br/>by the Beach in Qatar</h1>
@@ -316,24 +192,20 @@
 
 <div class="wrap">
 
-  <!-- ══ TIP BAR ═══════════════════════════════════════════ -->
   <div class="tip-bar" style="margin-top:44px;">
     <strong>Best season:</strong> October – April &nbsp;|&nbsp;
     <strong>Bring:</strong> BBQ grill, charcoal, water, sunscreen, tent &nbsp;|&nbsp;
     <strong>All spots below are free or low-cost &amp; family-safe.</strong>
   </div>
 
-  <!-- ══ SECTION LABEL ══════════════════════════════════════ -->
   <div class="section-label" style="padding-top:0;">Top Spots</div>
 
-  <!-- ══ 1. FUWAIRIT BEACH ══════════════════════════════════ -->
+  <!-- ══ 1. FUWAIRIT BEACH ══════════════════════ -->
   <div class="beach-card">
     <div class="img-wrap">
-      <img class="beach-img"
-           src="https://img.youtube.com/vi/TRpUF_64hog/maxresdefault.jpg"
-           alt="Fuwairit Beach — wild sandy shores in northern Qatar"
-           onerror="this.src='https://img.youtube.com/vi/TRpUF_64hog/hqdefault.jpg'" />
-      <span class="img-credit">Photo: Fuwairit Beach vlog · YouTube</span>
+      <img id="img-fuwairit" class="beach-img"
+           alt="Fuwairit Beach — wild sandy shores in northern Qatar" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
     </div>
     <div class="body">
       <div class="tags">
@@ -345,33 +217,32 @@
       <div class="beach-name">Fuwairit Beach</div>
       <div class="beach-loc">📍 Al Shamal · ~120 km north of Doha · ~1.5 hr drive</div>
       <p class="beach-desc">
-        Qatar's most-loved wild beach. Wide sandy shores, crystal Gulf water, and zero crowds. Sea turtles nest here in summer. Overnight family camping is a local tradition.
+        Qatar's most-loved wild beach. Wide sandy shores, crystal Gulf water, and zero crowds.
+        Sea turtles nest here in summer. Overnight family camping is a local tradition.
       </p>
       <ul class="facts">
-        <li><strong>Directions:</strong> Al Shamal Road (Route 1) north → exit at Fuwairit village sign → follow coastal track to beach.</li>
+        <li><strong>Directions:</strong> Al Shamal Road (Route 1) north → exit at Fuwairit village sign → follow coastal track.</li>
         <li>Completely free, no gate, no ticket. Open 24 hours.</li>
         <li>No facilities — bring your own grill, charcoal, water &amp; tent.</li>
-        <li>Best Oct–Apr. 4×4 helpful on soft sand closer to shore.</li>
+        <li>Best Oct–Apr. 4×4 helpful on soft sand near the shore.</li>
       </ul>
       <div class="btns">
         <a class="btn btn-map"
            href="https://www.google.com/maps/dir/?api=1&destination=26.0704,51.3578"
            target="_blank" rel="noopener">📍 Get Directions</a>
         <a class="btn btn-yt"
-           href="https://www.youtube.com/watch?v=TRpUF_64hog"
-           target="_blank" rel="noopener">▶ Watch Vlog</a>
+           href="https://www.youtube.com/watch?v=TQ2w1cuCb7c"
+           target="_blank" rel="noopener">▶ Watch Vlog 2024</a>
       </div>
     </div>
   </div>
 
-  <!-- ══ 2. SIMAISMA NORTH BEACH ════════════════════════════ -->
+  <!-- ══ 2. SIMAISMA NORTH BEACH ════════════════ -->
   <div class="beach-card">
     <div class="img-wrap">
-      <img class="beach-img"
-           src="https://img.youtube.com/vi/zc_IGCMD_lU/maxresdefault.jpg"
-           alt="Simaisma North Beach — calm family beach near Doha"
-           onerror="this.src='https://img.youtube.com/vi/zc_IGCMD_lU/hqdefault.jpg'" />
-      <span class="img-credit">Photo: Simaisma Beach 4K vlog · YouTube</span>
+      <img id="img-simaisma" class="beach-img"
+           alt="Simaisma North Beach — calm family beach near Doha" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
     </div>
     <div class="body">
       <div class="tags">
@@ -383,10 +254,11 @@
       <div class="beach-name">Simaisma North Beach</div>
       <div class="beach-loc">📍 Al Daayen · ~30 km north of Doha · ~25 min drive</div>
       <p class="beach-desc">
-        The closest proper beach to Doha for a quick family escape. Calm shallow water, shaded seating, on-site BBQ grills, toilets — everything sorted for a relaxed day out.
+        The closest proper beach to Doha for a quick family escape. Calm shallow water,
+        shaded seating, on-site BBQ grills, and clean toilets — perfect for a relaxed day out.
       </p>
       <ul class="facts">
-        <li><strong>Directions:</strong> Al Khor Coastal Road north from Doha → exit at Simaisma signs → straight to beachfront.</li>
+        <li><strong>Directions:</strong> Al Khor Coastal Road north → exit at Simaisma signs → straight to beachfront.</li>
         <li>Entry: ~50 QAR per car. BBQ grills and shaded loungers on-site.</li>
         <li>Toilets every 300 m. Ample parking. Family park adjacent.</li>
         <li>Shallow calm water — safe for toddlers and young children.</li>
@@ -396,20 +268,18 @@
            href="https://www.google.com/maps/dir/?api=1&destination=25.574,51.4881"
            target="_blank" rel="noopener">📍 Get Directions</a>
         <a class="btn btn-yt"
-           href="https://www.youtube.com/watch?v=zc_IGCMD_lU"
-           target="_blank" rel="noopener">▶ Watch Vlog</a>
+           href="https://www.youtube.com/watch?v=X3ZUnaqU07A"
+           target="_blank" rel="noopener">▶ Watch Vlog 2024</a>
       </div>
     </div>
   </div>
 
-  <!-- ══ 3. ZEKREET BEACH ═══════════════════════════════════ -->
+  <!-- ══ 3. ZEKREET BEACH ═══════════════════════ -->
   <div class="beach-card">
     <div class="img-wrap">
-      <img class="beach-img"
-           src="https://img.youtube.com/vi/UFvJAeilNT0/maxresdefault.jpg"
-           alt="Zekreet Beach — dramatic cliffs and camping on Qatar's west coast"
-           onerror="this.src='https://img.youtube.com/vi/UFvJAeilNT0/hqdefault.jpg'" />
-      <span class="img-credit">Photo: Zekreet Camping Adventure vlog · YouTube</span>
+      <img id="img-zekreet" class="beach-img"
+           alt="Zekreet Beach — dramatic cliffs and camping on Qatar's west coast" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
     </div>
     <div class="body">
       <div class="tags">
@@ -421,10 +291,11 @@
       <div class="beach-name">Zekreet Beach</div>
       <div class="beach-loc">📍 Al Shahaniya · ~80 km northwest of Doha · ~1 hr drive</div>
       <p class="beach-desc">
-        Remote, dramatic, and unforgettable. Rugged rocky cliffs meet clear Gulf water. Qatar's famous "Film City" rock formations sit just minutes away — a bonus hike after your BBQ.
+        Remote, dramatic, and unforgettable. Rugged rocky cliffs meet clear Gulf water.
+        Qatar's "Film City" rock formations sit minutes away — a bonus hike after your BBQ.
       </p>
       <ul class="facts">
-        <li><strong>Directions:</strong> Dukhan Highway (Route 3) west from Doha → follow signs to Zekreet (Bir Zekrit) → bear right to coastline.</li>
+        <li><strong>Directions:</strong> Dukhan Highway (Route 3) west → follow signs to Zekreet (Bir Zekrit) → bear right to coastline.</li>
         <li>Completely free. No entry fee. Open 24 hours.</li>
         <li>Bring all supplies: water, BBQ kit, tent, fuel. No facilities.</li>
         <li>Rocky shore — wear sandals. 4×4 recommended off the main track.</li>
@@ -434,20 +305,18 @@
            href="https://www.google.com/maps/dir/?api=1&destination=25.5059,50.8747"
            target="_blank" rel="noopener">📍 Get Directions</a>
         <a class="btn btn-yt"
-           href="https://www.youtube.com/watch?v=UFvJAeilNT0"
-           target="_blank" rel="noopener">▶ Watch Vlog</a>
+           href="https://www.youtube.com/watch?v=OK3RcGvRaZs"
+           target="_blank" rel="noopener">▶ Watch Vlog 2025</a>
       </div>
     </div>
   </div>
 
-  <!-- ══ 4. AL THAKIRA — PURPLE ISLAND ══════════════════════ -->
+  <!-- ══ 4. AL THAKIRA (PURPLE ISLAND) ══════════ -->
   <div class="beach-card">
     <div class="img-wrap">
-      <img class="beach-img"
-           src="https://img.youtube.com/vi/3pB-YlChmJ8/maxresdefault.jpg"
-           alt="Al Thakira Purple Island — mangrove beach near Al Khor"
-           onerror="this.src='https://img.youtube.com/vi/3pB-YlChmJ8/hqdefault.jpg'" />
-      <span class="img-credit">Photo: 12 Best Qatar Beaches vlog · YouTube</span>
+      <img id="img-thakira" class="beach-img"
+           alt="Al Thakira Purple Island — mangrove beach near Al Khor" />
+      <span class="img-credit">📷 via Wikipedia Commons</span>
     </div>
     <div class="body">
       <div class="tags">
@@ -458,15 +327,16 @@
       </div>
       <div class="beach-name">
         Al Thakira Beach
-        <span style="font-weight:400; font-size:1rem; color:var(--muted)"> (Purple Island)</span>
+        <span style="font-weight:400;font-size:1rem;color:var(--muted)"> (Purple Island)</span>
       </div>
       <div class="beach-loc">📍 Al Khor · ~60 km north of Doha · ~45 min drive</div>
       <p class="beach-desc">
-        Hidden behind dense mangroves, this quiet inlet near Al Khor glows purple at sunset. Flat open ground for BBQ and camping, birdsong all around, and kayaking through mangrove tunnels.
+        Hidden behind dense mangroves near Al Khor — serene and breathtaking at sunset
+        when the shallow water glows purple. Flat open ground for BBQ and overnight camping.
       </p>
       <ul class="facts">
-        <li><strong>Directions:</strong> Al Khor Road north → into Al Khor city → follow "Al Thakira Mangroves" or "Purple Island" signs to the shore.</li>
-        <li>Completely free. Kayak rentals available nearby (~30–50 QAR/hr).</li>
+        <li><strong>Directions:</strong> Al Khor Road north → into Al Khor city → follow "Al Thakira Mangroves" or "Purple Island" signs.</li>
+        <li>Completely free. Kayak rentals nearby (~30–50 QAR/hr).</li>
         <li>Flat open area — ideal for tents and BBQ beside the water.</li>
         <li>Go at sunset for the famous purple-lit shallow water glow.</li>
       </ul>
@@ -475,54 +345,54 @@
            href="https://www.google.com/maps/dir/?api=1&destination=25.6835,51.5265"
            target="_blank" rel="noopener">📍 Get Directions</a>
         <a class="btn btn-yt"
-           href="https://www.youtube.com/watch?v=3pB-YlChmJ8"
-           target="_blank" rel="noopener">▶ Watch Vlog</a>
+           href="https://www.youtube.com/watch?v=EVzN6-mtWsU"
+           target="_blank" rel="noopener">▶ Watch Vlog 4K</a>
       </div>
     </div>
   </div>
 
-  <!-- ══ VLOGS SECTION ══════════════════════════════════════ -->
-  <div class="section-label">Featured Vlogs</div>
+  <!-- ══ VLOGS SECTION ══════════════════════════ -->
+  <div class="section-label">Featured Vlogs — 2024 &amp; 2025</div>
 
   <div class="vlogs-grid">
 
     <div class="vlog-card">
-      <iframe src="https://www.youtube.com/embed/3pB-YlChmJ8"
-              title="12 Best Qatar Beaches — Fuwairit, Al Thakira, Zekreet, Sealine"
+      <iframe src="https://www.youtube.com/embed/2GGcufe2Leg"
+              title="2025 Camping in Qatar Sealine Beach — Tips & Guide"
               allowfullscreen loading="lazy"></iframe>
       <div class="vlog-info">
-        <div class="vlog-title">12 Best Qatar Beaches — Fuwairit, Al Thakira, Zekreet &amp; more</div>
-        <div class="vlog-ch">Complete beach guide · Qatar</div>
+        <div class="vlog-title">2025 Camping in Qatar — Sealine Beach | 11 Tips &amp; Guide</div>
+        <div class="vlog-ch">Qatar camping guide · 2025</div>
       </div>
     </div>
 
     <div class="vlog-card">
-      <iframe src="https://www.youtube.com/embed/UFvJAeilNT0"
-              title="Zekreet Camping Adventure Qatar"
+      <iframe src="https://www.youtube.com/embed/HBC3jmYx6hU"
+              title="Overnight Camping on the Beach — Life in Qatar"
               allowfullscreen loading="lazy"></iframe>
       <div class="vlog-info">
-        <div class="vlog-title">Zekreet Camping Adventure — Overnight Beach Camp in Qatar</div>
-        <div class="vlog-ch">Camping vlog · Qatar</div>
+        <div class="vlog-title">Overnight Camping on the Beach — Life in Qatar</div>
+        <div class="vlog-ch">Beach camping vlog · Qatar</div>
       </div>
     </div>
 
     <div class="vlog-card">
-      <iframe src="https://www.youtube.com/embed/zc_IGCMD_lU"
-              title="Simaisma North Beach Best Beach in Qatar 4K"
+      <iframe src="https://www.youtube.com/embed/OK3RcGvRaZs"
+              title="Exploring Qatar's Zekreet Beach & Mysterious Film City 2025"
               allowfullscreen loading="lazy"></iframe>
       <div class="vlog-info">
-        <div class="vlog-title">Simaisma North Beach — Best Family Beach Near Doha | 4K</div>
-        <div class="vlog-ch">Beach tour vlog · Qatar</div>
+        <div class="vlog-title">Zekreet Beach &amp; Mysterious Film City — Hidden Gems 2025</div>
+        <div class="vlog-ch">Zekreet travel vlog · 2025</div>
       </div>
     </div>
 
     <div class="vlog-card">
-      <iframe src="https://www.youtube.com/embed/TRpUF_64hog"
-              title="Fuwairit Beach Qatar vlog"
+      <iframe src="https://www.youtube.com/embed/TQ2w1cuCb7c"
+              title="Fuwairit Beach Secret Cave Qatar 2024"
               allowfullscreen loading="lazy"></iframe>
       <div class="vlog-info">
-        <div class="vlog-title">Fuwairit Beach — Qatar's Hidden Northern Gem</div>
-        <div class="vlog-ch">Beach vlog · North Qatar</div>
+        <div class="vlog-title">Secret Cave at Fuwairit Beach — Indian Family in Qatar 2024</div>
+        <div class="vlog-ch">Fuwairit beach vlog · 2024</div>
       </div>
     </div>
 
@@ -532,10 +402,69 @@
 
 <footer>
   <p>
-    All spots are free or low-cost public beaches open to everyone. Best visited October – April. &nbsp;·&nbsp;
+    All spots are free or low-cost public beaches open to everyone. Best visited October – April.
+    &nbsp;·&nbsp;
     <a href="https://visitqatar.com" target="_blank" rel="noopener">visitqatar.com</a>
   </p>
 </footer>
+
+<!-- ══ IMAGE LOADER — Wikipedia Open API (no key needed) ══ -->
+<script>
+  const beaches = [
+    {
+      id: 'img-fuwairit',
+      wikiTitles: ['Fuwayrit', 'Fuwairit_Beach'],
+      ytId: 'TQ2w1cuCb7c'
+    },
+    {
+      id: 'img-simaisma',
+      wikiTitles: ['Simaisma', 'Simaisma_Beach'],
+      ytId: 'X3ZUnaqU07A'
+    },
+    {
+      id: 'img-zekreet',
+      wikiTitles: ['Zekreet', 'Zekreet_Beach'],
+      ytId: 'OK3RcGvRaZs'
+    },
+    {
+      id: 'img-thakira',
+      wikiTitles: ['Purple_Island,_Qatar', 'Al_Thakira'],
+      ytId: 'EVzN6-mtWsU'
+    }
+  ];
+
+  async function loadWikiImage(titles, imgEl, ytId) {
+    for (const title of titles) {
+      try {
+        const url =
+          'https://en.wikipedia.org/w/api.php' +
+          '?action=query&prop=pageimages&pithumbsize=900' +
+          '&titles=' + encodeURIComponent(title) +
+          '&format=json&origin=*';
+        const res = await fetch(url);
+        const data = await res.json();
+        const page = Object.values(data.query.pages)[0];
+        if (page.thumbnail && page.thumbnail.source) {
+          imgEl.src = page.thumbnail.source;
+          imgEl.onload = () => imgEl.classList.add('ready');
+          imgEl.onerror = () => useFallback(imgEl, ytId);
+          return; // success — stop trying other titles
+        }
+      } catch (_) {}
+    }
+    useFallback(imgEl, ytId);
+  }
+
+  function useFallback(imgEl, ytId) {
+    imgEl.src = 'https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg';
+    imgEl.onload = () => imgEl.classList.add('ready');
+  }
+
+  beaches.forEach(({ id, wikiTitles, ytId }) => {
+    const img = document.getElementById(id);
+    if (img) loadWikiImage(wikiTitles, img, ytId);
+  });
+</script>
 
 </body>
 </html>
