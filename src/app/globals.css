@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:root {
+  --maroon: #8a1538; /* Qatar flag maroon */
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
